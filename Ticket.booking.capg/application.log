@@ -6802,3 +6802,225 @@ Caused by: org.hibernate.AnnotationException: Use of @OneToMany or @ManyToMany t
 2021-03-14 19:42:05.172  INFO 4516 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
 2021-03-14 19:42:05.173  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Before Starting application
 2021-03-14 19:42:05.173  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting my application with 0 args.
+2021-03-14 19:50:15.439  INFO 4516 --- [Thread-93] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:50:15.440  INFO 4516 --- [Thread-93] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:50:15.441  INFO 4516 --- [Thread-93] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Shutdown initiated...
+2021-03-14 19:50:15.444  INFO 4516 --- [Thread-93] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Shutdown completed.
+2021-03-14 19:50:15.582  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting Application using Java 15.0.1 on LAPTOP-IPLGM4E4 with PID 4516 (E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg\bin\main started by abhiram in E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg)
+2021-03-14 19:50:15.582  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : No active profile set, falling back to default profiles: default
+2021-03-14 19:50:16.007  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-14 19:50:16.025  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 10 JPA repository interfaces.
+2021-03-14 19:50:16.084  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-03-14 19:50:16.085  INFO 4516 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-14 19:50:16.085  INFO 4516 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-14 19:50:16.105  INFO 4516 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-14 19:50:16.105  INFO 4516 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 522 ms
+2021-03-14 19:50:16.127  INFO 4516 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-14 19:50:16.130  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Starting...
+2021-03-14 19:50:16.168  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Start completed.
+2021-03-14 19:50:16.168  INFO 4516 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-03-14 19:50:17.159  INFO 4516 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-14 19:50:17.159  INFO 4516 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:50:17.164  INFO 4516 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-03-14 19:50:17.349  WARN 4516 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-14 19:50:17.368  INFO 4516 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-14 19:50:17.388  INFO 4516 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:50:17.424  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-03-14 19:50:17.425  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-14 19:50:17.426  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-14 19:50:17.434  INFO 4516 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-14 19:50:17.466  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_1
+2021-03-14 19:50:17.467  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_2
+2021-03-14 19:50:17.481  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteSeatUsingDELETE_1
+2021-03-14 19:50:17.489  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewScreenByIdUsingGET_1
+2021-03-14 19:50:17.502  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_1
+2021-03-14 19:50:17.507  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_2
+2021-03-14 19:50:17.512  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Started Application in 1.944 seconds (JVM running for 6670.581)
+2021-03-14 19:50:17.513  INFO 4516 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-03-14 19:50:17.513  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Before Starting application
+2021-03-14 19:50:17.513  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting my application with 0 args.
+2021-03-14 19:51:55.598  INFO 4516 --- [Thread-99] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:51:55.599  INFO 4516 --- [Thread-99] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:51:55.599  INFO 4516 --- [Thread-99] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Shutdown initiated...
+2021-03-14 19:51:55.601  INFO 4516 --- [Thread-99] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Shutdown completed.
+2021-03-14 19:51:55.696  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting Application using Java 15.0.1 on LAPTOP-IPLGM4E4 with PID 4516 (E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg\bin\main started by abhiram in E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg)
+2021-03-14 19:51:55.696  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : No active profile set, falling back to default profiles: default
+2021-03-14 19:51:55.913  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-14 19:51:55.943  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 10 JPA repository interfaces.
+2021-03-14 19:51:56.003  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-03-14 19:51:56.003  INFO 4516 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-14 19:51:56.003  INFO 4516 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-14 19:51:56.021  INFO 4516 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-14 19:51:56.021  INFO 4516 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 324 ms
+2021-03-14 19:51:56.040  INFO 4516 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-14 19:51:56.044  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Starting...
+2021-03-14 19:51:56.078  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Start completed.
+2021-03-14 19:51:56.079  INFO 4516 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-03-14 19:51:57.149  INFO 4516 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-14 19:51:57.149  INFO 4516 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:51:57.153  INFO 4516 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-03-14 19:51:57.419  WARN 4516 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-14 19:51:57.445  INFO 4516 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-14 19:51:57.474  INFO 4516 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:51:57.515  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-03-14 19:51:57.515  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-14 19:51:57.516  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-14 19:51:57.526  INFO 4516 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-14 19:51:57.567  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_1
+2021-03-14 19:51:57.568  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_2
+2021-03-14 19:51:57.580  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteSeatUsingDELETE_1
+2021-03-14 19:51:57.601  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewScreenByIdUsingGET_1
+2021-03-14 19:51:57.626  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_1
+2021-03-14 19:51:57.633  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_2
+2021-03-14 19:51:57.643  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Started Application in 1.966 seconds (JVM running for 6770.712)
+2021-03-14 19:51:57.646  INFO 4516 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-03-14 19:51:57.646  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Before Starting application
+2021-03-14 19:51:57.646  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting my application with 0 args.
+2021-03-14 19:51:58.973  INFO 4516 --- [Thread-105] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:51:58.974  INFO 4516 --- [Thread-105] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:51:58.974  INFO 4516 --- [Thread-105] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown initiated...
+2021-03-14 19:51:58.976  INFO 4516 --- [Thread-105] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown completed.
+2021-03-14 19:51:59.058  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting Application using Java 15.0.1 on LAPTOP-IPLGM4E4 with PID 4516 (E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg\bin\main started by abhiram in E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg)
+2021-03-14 19:51:59.059  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : No active profile set, falling back to default profiles: default
+2021-03-14 19:51:59.292  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-14 19:51:59.317  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 10 JPA repository interfaces.
+2021-03-14 19:51:59.390  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-03-14 19:51:59.391  INFO 4516 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-14 19:51:59.391  INFO 4516 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-14 19:51:59.411  INFO 4516 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-14 19:51:59.411  INFO 4516 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 351 ms
+2021-03-14 19:51:59.435  INFO 4516 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-14 19:51:59.439  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Starting...
+2021-03-14 19:51:59.478  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Start completed.
+2021-03-14 19:51:59.478  INFO 4516 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-03-14 19:52:00.455  INFO 4516 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-14 19:52:00.456  INFO 4516 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:52:00.459  INFO 4516 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-03-14 19:52:00.649  WARN 4516 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-14 19:52:00.669  INFO 4516 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-14 19:52:00.689  INFO 4516 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:52:00.723  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-03-14 19:52:00.724  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-14 19:52:00.724  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-14 19:52:00.731  INFO 4516 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-14 19:52:00.760  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_1
+2021-03-14 19:52:00.761  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_2
+2021-03-14 19:52:00.772  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteSeatUsingDELETE_1
+2021-03-14 19:52:00.786  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewScreenByIdUsingGET_1
+2021-03-14 19:52:00.798  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_1
+2021-03-14 19:52:00.804  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_2
+2021-03-14 19:52:00.809  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Started Application in 1.766 seconds (JVM running for 6773.878)
+2021-03-14 19:52:00.810  INFO 4516 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-03-14 19:52:00.810  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Before Starting application
+2021-03-14 19:52:00.811  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting my application with 0 args.
+2021-03-14 19:52:26.372  INFO 4516 --- [Thread-111] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:52:26.373  INFO 4516 --- [Thread-111] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:52:26.373  INFO 4516 --- [Thread-111] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown initiated...
+2021-03-14 19:52:26.380  INFO 4516 --- [Thread-111] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown completed.
+2021-03-14 19:52:26.489  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting Application using Java 15.0.1 on LAPTOP-IPLGM4E4 with PID 4516 (E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg\bin\main started by abhiram in E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg)
+2021-03-14 19:52:26.489  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : No active profile set, falling back to default profiles: default
+2021-03-14 19:52:26.676  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-14 19:52:26.696  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 10 JPA repository interfaces.
+2021-03-14 19:52:26.768  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-03-14 19:52:26.769  INFO 4516 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-14 19:52:26.769  INFO 4516 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-14 19:52:26.788  INFO 4516 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-14 19:52:26.788  INFO 4516 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 298 ms
+2021-03-14 19:52:26.810  INFO 4516 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-14 19:52:26.813  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Starting...
+2021-03-14 19:52:26.847  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Start completed.
+2021-03-14 19:52:26.848  INFO 4516 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-03-14 19:52:27.816  INFO 4516 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-14 19:52:27.816  INFO 4516 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:52:27.820  INFO 4516 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-03-14 19:52:28.017  WARN 4516 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-14 19:52:28.053  INFO 4516 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-14 19:52:28.088  INFO 4516 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:52:28.128  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-03-14 19:52:28.128  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-14 19:52:28.129  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-14 19:52:28.140  INFO 4516 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-14 19:52:28.169  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_1
+2021-03-14 19:52:28.170  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_2
+2021-03-14 19:52:28.180  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteSeatUsingDELETE_1
+2021-03-14 19:52:28.193  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewScreenByIdUsingGET_1
+2021-03-14 19:52:28.209  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_1
+2021-03-14 19:52:28.215  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_2
+2021-03-14 19:52:28.221  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Started Application in 1.752 seconds (JVM running for 6801.29)
+2021-03-14 19:52:28.223  INFO 4516 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-03-14 19:52:28.223  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Before Starting application
+2021-03-14 19:52:28.223  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting my application with 0 args.
+2021-03-14 19:53:13.920  INFO 4516 --- [Thread-117] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:53:13.923  INFO 4516 --- [Thread-117] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:53:13.923  INFO 4516 --- [Thread-117] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Shutdown initiated...
+2021-03-14 19:53:13.925  INFO 4516 --- [Thread-117] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Shutdown completed.
+2021-03-14 19:53:14.052  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting Application using Java 15.0.1 on LAPTOP-IPLGM4E4 with PID 4516 (E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg\bin\main started by abhiram in E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg)
+2021-03-14 19:53:14.053  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : No active profile set, falling back to default profiles: default
+2021-03-14 19:53:14.246  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-14 19:53:14.269  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 10 JPA repository interfaces.
+2021-03-14 19:53:14.331  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-03-14 19:53:14.332  INFO 4516 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-14 19:53:14.332  INFO 4516 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-14 19:53:14.351  INFO 4516 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-14 19:53:14.351  INFO 4516 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 295 ms
+2021-03-14 19:53:14.374  INFO 4516 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-14 19:53:14.377  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Starting...
+2021-03-14 19:53:14.413  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Start completed.
+2021-03-14 19:53:14.414  INFO 4516 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-03-14 19:53:15.351  INFO 4516 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-14 19:53:15.351  INFO 4516 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:53:15.354  INFO 4516 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-03-14 19:53:15.507  WARN 4516 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-14 19:53:15.529  INFO 4516 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-14 19:53:15.551  INFO 4516 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:53:15.591  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-03-14 19:53:15.591  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-14 19:53:15.592  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-14 19:53:15.598  INFO 4516 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-14 19:53:15.631  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_1
+2021-03-14 19:53:15.632  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_2
+2021-03-14 19:53:15.646  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteSeatUsingDELETE_1
+2021-03-14 19:53:15.654  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewScreenByIdUsingGET_1
+2021-03-14 19:53:15.668  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_1
+2021-03-14 19:53:15.675  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_2
+2021-03-14 19:53:15.685  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Started Application in 1.654 seconds (JVM running for 6848.754)
+2021-03-14 19:53:15.688  INFO 4516 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-03-14 19:53:15.691  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Before Starting application
+2021-03-14 19:53:15.692  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting my application with 0 args.
+2021-03-14 19:54:34.663  INFO 4516 --- [Thread-123] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:54:34.665  INFO 4516 --- [Thread-123] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:54:34.665  INFO 4516 --- [Thread-123] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Shutdown initiated...
+2021-03-14 19:54:34.668  INFO 4516 --- [Thread-123] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Shutdown completed.
+2021-03-14 19:54:34.768  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting Application using Java 15.0.1 on LAPTOP-IPLGM4E4 with PID 4516 (E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg\bin\main started by abhiram in E:\Updated\capg.movieapplication.ticketbooking-master\Ticket.booking.capg)
+2021-03-14 19:54:34.769  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : No active profile set, falling back to default profiles: default
+2021-03-14 19:54:34.962  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-14 19:54:34.981  INFO 4516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 10 JPA repository interfaces.
+2021-03-14 19:54:35.037  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-03-14 19:54:35.038  INFO 4516 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-14 19:54:35.038  INFO 4516 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-14 19:54:35.059  INFO 4516 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-14 19:54:35.059  INFO 4516 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 289 ms
+2021-03-14 19:54:35.081  INFO 4516 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-14 19:54:35.083  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Starting...
+2021-03-14 19:54:35.119  INFO 4516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Start completed.
+2021-03-14 19:54:35.119  INFO 4516 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-03-14 19:54:36.090  INFO 4516 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-14 19:54:36.090  INFO 4516 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 19:54:36.096  INFO 4516 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-03-14 19:54:36.296  WARN 4516 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-14 19:54:36.315  INFO 4516 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-14 19:54:36.338  INFO 4516 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-14 19:54:36.368  INFO 4516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-03-14 19:54:36.368  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-14 19:54:36.369  INFO 4516 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-14 19:54:36.378  INFO 4516 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-14 19:54:36.416  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_1
+2021-03-14 19:54:36.417  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewMovieListUsingGET_2
+2021-03-14 19:54:36.434  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteSeatUsingDELETE_1
+2021-03-14 19:54:36.448  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: viewScreenByIdUsingGET_1
+2021-03-14 19:54:36.461  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_1
+2021-03-14 19:54:36.467  INFO 4516 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByticketIdUsingGET_2
+2021-03-14 19:54:36.474  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Started Application in 1.722 seconds (JVM running for 6929.544)
+2021-03-14 19:54:36.476  INFO 4516 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-03-14 19:54:36.477  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Before Starting application
+2021-03-14 19:54:36.477  INFO 4516 --- [restartedMain] c.s.m.b.ticket1.booking.Application      : Starting my application with 0 args.

@@ -13,24 +13,29 @@ import com.sprint1.movie.booking.ticket1.booking.exceptions.AdminNotExistsExcept
 import com.sprint1.movie.booking.ticket1.booking.repository.AdminRepository;
 import com.sprint1.movie.booking.ticket1.booking.service.AdminService;
 
-
 @Service
 public class AdminServiceImplementation implements AdminService {
 	@Autowired
 	AdminRepository iar;
 	
+	Optional<Admin> admins = null;
+	
 	//Adding a Admin
 	public void addAdmin(Admin a)   {
-		
-			User user = new User("Password","Admin");
-			a.setUser(user);
+		admins = iar.findById(a.getadminId());
+		if(admins.isEmpty()) {
 			iar.save(a);
-
+		}
+//		else {
+//			 
+//			 new AdminAlreadyExistsException("Admin with id:"+a.getadminId()+" already exists");
+//		}
 	}
 	
 	//Viewing all admins
 	public List<Admin> viewAllAdmin() {
-		return iar.findAll();
+		List<Admin> admins = iar.findAll();
+		return admins;
 	}
 
 	//Viewing customer by id
@@ -40,9 +45,6 @@ public class AdminServiceImplementation implements AdminService {
 		Admin a = null;
 		if(admin.isPresent()) {
 			a = admin.get();
-		}
-		else {
-			throw new AdminNotExistsException("Admin not exists with id"+id);
 		}
 		
 		return a;
@@ -56,9 +58,9 @@ public class AdminServiceImplementation implements AdminService {
 			a = admin.get();
 			iar.delete(a);
 		}
-		else {
-			throw new AdminNotExistsException("Admin not exists with id"+id);
-		}
+//		else {
+//			throw new AdminDoesNotExistException("Customer with id:"+c.getCust_id()+" does not exist");
+//		}
 	}
 
 	//Update
@@ -76,13 +78,17 @@ public class AdminServiceImplementation implements AdminService {
 			}
 			
 		}
-		else {
-			throw new AdminNotExistsException("Admin not exists with id"+admin.getadminId());
-		}
 		return updateadmin;
 	}
-	
-	public Admin byAdminNameAndAdminContact(String adminName,String contact) {
-		return iar.findByAdminNameAndAdminContact(adminName, contact);
+
+	public Admin ByAdminNameAndAdminContact(String adminName, String adminContact) {
+		return iar.findByAdminNameAndAdminContact(adminName, adminContact);
+		}
+
+	@Override
+	public Optional<Admin> findByAdminId(int id) {
+		return iar.findById(id);
+		
 	}
+	
 }
