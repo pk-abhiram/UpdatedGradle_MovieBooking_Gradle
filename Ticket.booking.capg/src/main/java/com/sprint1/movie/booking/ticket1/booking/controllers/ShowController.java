@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sprint1.movie.booking.ticket1.booking.Application;
 import com.sprint1.movie.booking.ticket1.booking.entities.Show;
 import com.sprint1.movie.booking.ticket1.booking.exceptions.ShowNotExistsException;
 import com.sprint1.movie.booking.ticket1.booking.repository.ScreenRepository;
@@ -38,13 +37,13 @@ public class ShowController {
 	static final org.slf4j.Logger log = LoggerFactory.getLogger(ShowController.class);
 	@Autowired
 	ShowServiceImplementation showServiceImplementation;
-	
+
 	@Autowired
 	ShowRepository showRepository;
-	
+
 	@Autowired
 	ScreenRepository screenRepository;
-	
+
 	@PostMapping(value="/")
 	@ApiOperation(value = "Add a show", notes = "Provide show details", response = Show.class)
 	public ResponseEntity<Show> addShow(@RequestBody Show show) {
@@ -54,7 +53,7 @@ public class ShowController {
 		log.info(re+"");
 		return re;
 	}
-	
+
 	@PutMapping(value="/" )
 	@ApiOperation(value = "Update a show's details", notes = "Provide show id, new screen id,show end time, show start time, show name,theatre id, movie id", response = Show.class)
 	@Transactional
@@ -62,7 +61,7 @@ public class ShowController {
 		ResponseEntity<Show>  re;
 		Optional<Show> findShow = showRepository.findById(show.getShowId());
 		if(findShow.isPresent()) {
-		Show getShow=showServiceImplementation.updateShow(show);
+			Show getShow=showServiceImplementation.updateShow(show);
 			re=new ResponseEntity<>(getShow,HttpStatus.OK);
 		}
 		else {
@@ -71,7 +70,7 @@ public class ShowController {
 		log.info(re+"");
 		return re;
 	}
-	
+
 	@DeleteMapping(value="/")
 	@ApiOperation(value = "Delete a show", notes = "Provide show details", response = Show.class)
 	public ResponseEntity<Show> removeShow(@RequestBody Show show) {
@@ -81,58 +80,68 @@ public class ShowController {
 		return re;
 	}
 	
-	@GetMapping(value="/{show}")
-	public ResponseEntity<Show> viewShow(@PathVariable("show") Show show){
+	
+	@DeleteMapping(value="/id/{showId}")
+	@ApiOperation(value = "Delete a show", notes = "Provide show ID", response = Show.class)
+	public ResponseEntity<Show> removeShowById(@PathVariable("showId") int showId) {
+		Show removeShow=showServiceImplementation.deleteShowById(showId);
 		ResponseEntity<Show>  re;
-		Show findShow=showServiceImplementation.viewShow(show);
-			re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
-			log.info(re+"");
+		re=new ResponseEntity<>(removeShow,HttpStatus.OK);
 		return re;
 	}
-	
+
+	@PostMapping(value="/viewShow")
+	public ResponseEntity<Show> viewShow(@RequestBody Show show){
+		ResponseEntity<Show>  re;
+		Show findShow=showServiceImplementation.viewShow(show);
+		re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
+		log.info(re+"");
+		return re;
+	}
+
 	@GetMapping(value="/{showId}")
 	@ApiOperation(value = "View a screen by id", notes = "Provide show id", response = Show.class)
 	public ResponseEntity<Show> viewScreenById(@PathVariable("showId") int showId){
 		ResponseEntity<Show>  re;
 		Show findShow=showServiceImplementation.viewShowById(showId);
-		
-			re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
-			log.info(re+"");
+
+		re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
+		log.info(re+"");
 		return re;
 	}
-	
+
 	@GetMapping(value="/theatre/{theatreId}")
 	@ApiOperation(value = "View a screen using theatre id", notes = "Provide theatre id", response = Show.class)
 	public ResponseEntity<List<Show>> viewScreenBytheatreId(@PathVariable("theatreId") int theatreId){
 		ResponseEntity<List<Show>>  re;
 		List<Show> findShow=showServiceImplementation.viewShowList(theatreId);
-		
-			re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
-			log.info(re+"");
+
+		re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
+		log.info(re+"");
 		return re;
 	}
-	
+
 	@GetMapping(value="/LocalDate/{date}")
 	@ApiOperation(value = "View screens available on a perticular day", notes = "Provide date", response = Show.class)
 	public ResponseEntity<List<Show>> viewScreenByDate(@PathVariable("date") @DateTimeFormat(iso=ISO.DATE)  LocalDate date){
 		ResponseEntity<List<Show>>  re;
 		List<Show> findShow=showServiceImplementation.viewShowList(date);
-		
-			re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
-			log.info(re+"");
+
+		re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
+		log.info(re+"");
 		return re;
 	}
-	
+
 	@GetMapping(value="/")
-	@ApiOperation(value = "View all screens", response = Show.class)
+	@ApiOperation(value = "View all shows", response = Show.class)
 	public ResponseEntity<List<Show>> viewScreensAll(){
 		ResponseEntity<List<Show>>  re;
 		List<Show> findShow=showServiceImplementation.viewAllShows();
-		
-			re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
-			log.info(re+"");
+
+		re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
+		log.info(re+"");
 		return re;
 	}
-	
-	
+
+
 }

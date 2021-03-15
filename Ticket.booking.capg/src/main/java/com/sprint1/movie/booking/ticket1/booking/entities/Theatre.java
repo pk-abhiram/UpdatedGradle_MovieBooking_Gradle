@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.LazyCollection;
@@ -25,10 +26,10 @@ public class Theatre {
 	private String theatreName;
 	@Column(nullable = false)
 	private String theatreCity;
-	@OneToMany(targetEntity = Movie.class,cascade = CascadeType.MERGE)
+	@ManyToMany(targetEntity = Movie.class,cascade = CascadeType.MERGE)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Movie> listOfMovies;
-	@OneToMany(targetEntity = Screen.class,cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToMany(targetEntity = Screen.class,cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Screen> listOfScreens;
 	@Column(nullable = false)

@@ -92,7 +92,7 @@ public class MovieServiceImplementation implements MovieService {
 			return findRemoveMovie.get();
 		}
 		else {
-			throw new MovieNotExistsException("Movie Already Exist with ID : " + movieId);
+			throw new MovieNotExistsException("Movie Not Exist with ID : " + movieId);
 		}
 		
 	}
@@ -107,7 +107,7 @@ public class MovieServiceImplementation implements MovieService {
 		if(theatres.isPresent())
 		{	movies=theatres.get().getListOfMovies();}
 		else {
-			throw new TheatreNotExistsException("Movie Already Exist with ID : " + theatreId);
+			throw new TheatreNotExistsException("Movie Not Exist with ID : " + theatreId);
 		}
 		return movies;
 	}

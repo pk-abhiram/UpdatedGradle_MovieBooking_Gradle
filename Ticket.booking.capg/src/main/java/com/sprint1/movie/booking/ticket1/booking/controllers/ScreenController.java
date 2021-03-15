@@ -103,7 +103,7 @@ public class ScreenController {
 		return re;
 	}
 	
-	@RequestMapping(value="/show/{screenId}and{showId}" , method = RequestMethod.GET)
+	@DeleteMapping(value="/show/{screenId}and{showId}")
 	@ApiOperation(value = "delete show in a screen", notes = "input: screenId and showId", response = Screen.class)
 	public ResponseEntity<List<Screen>> deleteScreenByShowId(@PathVariable("screenId") int screenId,@PathVariable("showId") int showId){
 		ResponseEntity<List<Screen>>  re;

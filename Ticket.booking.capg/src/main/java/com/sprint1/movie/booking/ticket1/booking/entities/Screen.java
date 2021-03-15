@@ -27,7 +27,7 @@ public class Screen {
 	private int theatreId;
 	@NotNull
 	private String screenName;
-	@OneToMany(targetEntity = Show.class,cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(targetEntity = Show.class,cascade = CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Show> showList;
 	@Column(nullable = false)
@@ -120,7 +120,6 @@ public class Screen {
 		result = prime * result + columns;
 		result = prime * result + rows;
 		result = prime * result + ((screenName == null) ? 0 : screenName.hashCode());
-		result = prime * result + ((showList == null) ? 0 : showList.hashCode());
 		result = prime * result + theatreId;
 		return result;
 	}
@@ -143,16 +142,12 @@ public class Screen {
 				return false;
 		} else if (!screenName.equals(other.screenName))
 			return false;
-		if (showList == null) {
-			if (other.showList != null)
-				return false;
-		} else if (!showList.equals(other.showList))
-			return false;
 		if (theatreId != other.theatreId)
 			return false;
 		return true;
 	}
-	
+
+
 	
 	
 	

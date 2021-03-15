@@ -83,7 +83,11 @@ public class ScreenServiceImplementation implements ScreenService {
 		{updateScreen.setScreenName(screen.getScreenName());}
 		
 		if(screen.getShowList()!=null)
-		{	shows.addAll(screen.getShowList());
+		{	for(Show show:screen.getShowList()) {
+			show.setScreenid(screen.getScreenId());
+			show.setTheatreId(screen.getTheatreId());
+		}
+			shows.addAll(screen.getShowList());
 			updateScreen.setShowList(shows);
 		}
 		
@@ -100,7 +104,6 @@ public class ScreenServiceImplementation implements ScreenService {
 	public void removeScreen(int screenId) {
 		Optional<Screen> findRemoveScreen=screenRepository.findById(screenId);
 		if(findRemoveScreen.isPresent()) {
-			
 			theatreServiceImplementation.theatreRemoveScreen(findRemoveScreen.get().getTheatreId(), findRemoveScreen.get().getScreenId());
 		screenRepository.delete(findRemoveScreen.get());
 		}

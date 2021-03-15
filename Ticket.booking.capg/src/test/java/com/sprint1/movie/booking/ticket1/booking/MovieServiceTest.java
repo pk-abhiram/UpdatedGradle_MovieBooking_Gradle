@@ -5,6 +5,7 @@ package com.sprint1.movie.booking.ticket1.booking;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,6 +17,8 @@ import com.sprint1.movie.booking.ticket1.booking.servicesimplementation.TheatreS
 @SpringBootTest
 class MovieServiceTest {
 
+	static final org.slf4j.Logger log = LoggerFactory.getLogger(MovieServiceTest.class);	
+	
 	@Autowired
 	MovieServiceImplementation movieServiceImplementation;
 	
@@ -30,10 +33,11 @@ class MovieServiceTest {
 	
 //	@Test
 	void testAddMovie() {
-		
-			
-			Movie m=new Movie(16,"uppenna","comedy","2:30:37","Hindi","xyz");
-			movieServiceImplementation.addMovie(m);
+		Movie movie1=new Movie(1,"3 Idiots", "Comedy", "2:30", "Hindi", "College");
+		Movie movie2=new Movie(2,"Drishyam", "Thriller", "2:45", "Malayalam", "Crime");
+			//Movie m=new Movie(16,"uppenna","comedy","2:30:37","Hindi","xyz");
+			log.info(movieServiceImplementation.addMovie(movie1).toString());
+			log.info(movieServiceImplementation.addMovie(movie2).toString());
 		
 	}
 //	@Test
@@ -93,7 +97,7 @@ class MovieServiceTest {
 		
 	}
 	
-	@Test
+//	@Test
 	void testViewMovieByShow() {
 //		Movie m=new Movie("Abcd","Comedy","2:45:23","Hindi","College");
 //		List<Movie> movie=new ArrayList<>();

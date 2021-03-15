@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.NoResultException;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -18,6 +19,7 @@ import com.sprint1.movie.booking.ticket1.booking.servicesimplementation.TicketBo
 @SpringBootTest
 public class CustomerServiceTest {
 
+	static final org.slf4j.Logger log = LoggerFactory.getLogger(CustomerServiceTest.class);
 	@Autowired
 	CustomerService customerService;
 
@@ -66,12 +68,17 @@ public class CustomerServiceTest {
 		}
 	}
 
+
 //	@Test
-	void testViewCustomers() {
+void testViewCustomers() {
+	try {
 		int id=2;
-		Customer cust = customerService.viewCustomerById(id);
-		System.out.println(cust);
+		log.info(customerService.viewCustomerById(id)+"");
 	}
+	catch(Exception e) {
+		log.info(e.getMessage());
+	}
+}
 
 //		@Test
 	void testViewAllCustomers() {
@@ -91,4 +98,5 @@ public class CustomerServiceTest {
 		Customer cust = new Customer(id,null,null,null,null,"dontknowpassword");
 		customerService.updateCustomer(cust);
 	}
+	
 }

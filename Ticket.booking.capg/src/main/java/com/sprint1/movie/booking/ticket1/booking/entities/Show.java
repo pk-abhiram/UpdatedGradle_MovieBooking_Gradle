@@ -116,7 +116,6 @@ public class Show {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((movie == null) ? 0 : movie.hashCode());
 		result = prime * result + screenid;
 		result = prime * result + ((showEndTime == null) ? 0 : showEndTime.hashCode());
 		result = prime * result + ((showName == null) ? 0 : showName.hashCode());
@@ -136,11 +135,6 @@ public class Show {
 		if (getClass() != obj.getClass())
 			return false;
 		Show other = (Show) obj;
-		if (movie == null) {
-			if (other.movie != null)
-				return false;
-		} else if (!movie.equals(other.movie))
-			return false;
 		if (screenid != other.screenid)
 			return false;
 		if (showEndTime == null) {
@@ -162,6 +156,10 @@ public class Show {
 			return false;
 		return true;
 	}
+
+
+
+
 	
 	
 	

@@ -13,7 +13,7 @@ public class Application {
 		log.info("Before Starting application");
 		log.debug("Starting my application in debug with {} args", args.length);
 	    log.info("Starting my application with {} args.", args.length);  
-//	     ctx.close();
+	    //ctx.close();
 	}
 }
 

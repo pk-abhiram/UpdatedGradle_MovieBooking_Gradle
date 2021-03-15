@@ -28,79 +28,83 @@ public class CustomerServiceImplementation implements CustomerService{
 	//Adding a customer
 	@Transactional
 	public Customer addCustomer(Customer customer) {
-		
+		Optional<Customer> getCustomer = customerRepostitory.findById(customer.getCustomerId());
+		if(getCustomer.isPresent()) {
 			User user = new User(customer.getPassword(),"Customer");
 			customer.setUser(user);
-			return customerRepostitory.save(customer); 
-		
+			customer = customerRepostitory.save(customer); 
+		}
+		else {
+			throw new CustomerNotExistsException("Customer with id:"+customer.getCustomerId()+" already exists");
+		}
+		return customer;
+	}
+
+	//Update a customer
+	@Transactional
+	public Customer updateCustomer(Customer customer) {
+		Optional<Customer> getCustomer = customerRepostitory.findById(customer.getCustomerId());
+		Customer updatecust = null;
+		if(getCustomer.isPresent()) {
+			updatecust = getCustomer.get();
+			if(customer.getCustomerName()!=null) {
+				updatecust.setCustomerName(customer.getCustomerName());
+			}
+			if(customer.getAddress()!=null) {
+				updatecust.setAddress(customer.getAddress());
+			}
+			if(customer.getEmail()!=null) {
+				updatecust.setEmail(customer.getEmail());
+			}
+			if(customer.getMobileNo()!=null) {
+				updatecust.setMobileNo(customer.getMobileNo());
+			}
+			if(customer.getPassword()!=null) {
+				updatecust.setPassword(customer.getPassword());
+			}
+		}
+		else {
+			throw new CustomerNotExistsException("Customer with id:"+customer.getCustomerId()+" does not exists");
+		}
+		return updatecust;
+	}
+
+	//Deleting a customer
+	public Customer deleteCustomer(int id){
+		Optional<Customer> customer = customerRepostitory.findById(id);
+		Customer c = null;
+		if(customer.isPresent()) {
+			c = customer.get();
+			customerRepostitory.delete(c);
+			return c;
+		}
+		else {
+			throw new CustomerNotExistsException("Customer with id:"+id+" does not exists");
+		}
+
+	}	
+
+	//Viewing customer by id
+	public Customer viewCustomerById(int id) {
+
+		Optional<Customer> customer = customerRepostitory.findById(id);
+		Customer c = null;
+		if(customer.isPresent()) {
+			c = customer.get();
+			return c;
+		}
+		else {
+			throw new CustomerNotExistsException("Customer with id:"+id+" does not exists");
+		}
 
 	}
-	
-		//Update
-		@Transactional
-		public Customer updateCustomer(Customer customer) {
-			Optional<Customer> getCustomer = customerRepostitory.findById(customer.getCustomerId());
-			Customer updatecust = null;
-			if(getCustomer.isPresent()) {
-				updatecust = getCustomer.get();
-				if(customer.getCustomerName()!=null) {
-					updatecust.setCustomerName(customer.getCustomerName());
-				}
-				if(customer.getAddress()!=null) {
-					updatecust.setAddress(customer.getAddress());
-				}
-				if(customer.getEmail()!=null) {
-					updatecust.setEmail(customer.getEmail());
-				}
-				if(customer.getMobileNo()!=null) {
-					updatecust.setMobileNo(customer.getMobileNo());
-				}
-				if(customer.getPassword()!=null) {
-					updatecust.setPassword(customer.getPassword());
-				}
-			}
-			else {
-				throw new CustomerNotExistsException("Customer with id:"+customer.getCustomerId()+" does not exists");
-			}
-			return updatecust;
-		}
-		
-		//Deleting a customer
-		public Customer deleteCustomer(int id){
-			Optional<Customer> customer = customerRepostitory.findById(id);
-			Customer c = null;
-			if(customer.isPresent()) {
-				c = customer.get();
-				customerRepostitory.delete(c);
-				return c;
-			}
-			else {
-				throw new CustomerNotExistsException("Customer with id:"+id+" does not exists");
-			}
-			
-		}	
-		
-		//Viewing customer by id
-		public Customer viewCustomerById(int id) {
-		
-			Optional<Customer> customer = customerRepostitory.findById(id);
-			Customer c = null;
-			if(customer.isPresent()) {
-				c = customer.get();
-				return c;
-			}
-			else {
-				throw new CustomerNotExistsException("Customer with id:"+id+" does not exists");
-			}
-		
-		}
-		
-		//Viewing all customers
-		public List<Customer> viewAllCustomer() {
-			return customerRepostitory.findAll();
-		}
 
-		
+	//Viewing all customers
+	public List<Customer> viewAllCustomer() {
+		return customerRepostitory.findAll();
+	}
+
+	//Booking a ticket with customer details
 	public Customer addCustomerAndTicket(int id,List<TicketBooking> ticket) {
 		Optional<Customer> customer = customerRepostitory.findById(id);
 		if(customer.isPresent()) {
@@ -114,7 +118,7 @@ public class CustomerServiceImplementation implements CustomerService{
 		}
 	}
 
-
+	//Delete a ticket
 	public void deleteCustomerandTicket(int id,int ticketId) {
 		Optional<Customer> customer = customerRepostitory.findById(id);
 		if(customer.isPresent()) {
@@ -130,7 +134,7 @@ public class CustomerServiceImplementation implements CustomerService{
 
 	}
 
-	
+	//View all customers watching a movie
 	public List<Customer> viewAllCustomerInAMovie(int id) {
 		List<Customer> customer = customerRepostitory.findAll();
 		List<Customer> customerInAMovie = new ArrayList<>();
@@ -147,12 +151,12 @@ public class CustomerServiceImplementation implements CustomerService{
 		return customerInAMovie;
 	}
 
-	
-	
 
-	
 
-	
+
+
+
+
 
 
 
