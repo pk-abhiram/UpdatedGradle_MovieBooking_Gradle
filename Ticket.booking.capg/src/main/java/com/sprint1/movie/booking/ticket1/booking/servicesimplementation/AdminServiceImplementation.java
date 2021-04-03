@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sprint1.movie.booking.ticket1.booking.entities.Admin;
 import com.sprint1.movie.booking.ticket1.booking.entities.User;
-import com.sprint1.movie.booking.ticket1.booking.exceptions.AdminNotExistsException;
+import com.sprint1.movie.booking.ticket1.booking.exceptions.CustomerNotExistsException;
 import com.sprint1.movie.booking.ticket1.booking.repository.AdminRepository;
 import com.sprint1.movie.booking.ticket1.booking.service.AdminService;
 
@@ -18,18 +18,20 @@ public class AdminServiceImplementation implements AdminService {
 	@Autowired
 	AdminRepository iar;
 	
+	@Autowired
+	UserServiceImplementation userServiceImplementation;
+	
 	Optional<Admin> admins = null;
 	
 	//Adding a Admin
-	public void addAdmin(Admin a)   {
-		admins = iar.findById(a.getadminId());
-		if(admins.isEmpty()) {
-			iar.save(a);
+	public Admin addAdmin(Admin a)   {
+		System.out.println(a);
+		if(userServiceImplementation.findByEmailAdmin(a.getEmail())==null) {
+		User user = new User(a.getEmail(),a.getPassword(),"ADMIN");
+		a.setUser(user);
+			return iar.save(a);
 		}
-//		else {
-//			 
-//			 new AdminAlreadyExistsException("Admin with id:"+a.getadminId()+" already exists");
-//		}
+		throw new CustomerNotExistsException("Admin exists with email:"+a.getEmail());
 	}
 	
 	//Viewing all admins
@@ -66,15 +68,15 @@ public class AdminServiceImplementation implements AdminService {
 	//Update
 	@Transactional
 	public Admin updateAdmin(Admin admin) {
-		Optional<Admin> getAdmin = iar.findById(admin.getadminId());
+		Optional<Admin> getAdmin = iar.findById(admin.getAdminId());
 		Admin updateadmin = null;
 		if(getAdmin.isPresent()) {
 			updateadmin = getAdmin.get();
-			if(admin.getadminName()!=null) {
-				updateadmin.setadminName(admin.getadminName());
+			if(admin.getAdminName()!=null) {
+				updateadmin.setAdminName(admin.getAdminName());
 			}
-			if(admin.getadminContact()!=null) {
-				updateadmin.setadminContact(admin.getadminContact());
+			if(admin.getAdminContact()!=null) {
+				updateadmin.setAdminContact(admin.getAdminContact());
 			}
 			
 		}

@@ -10,6 +10,7 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sprint1.movie.booking.ticket1.booking.entities.Movie;
 import com.sprint1.movie.booking.ticket1.booking.entities.Screen;
 import com.sprint1.movie.booking.ticket1.booking.entities.Show;
 import com.sprint1.movie.booking.ticket1.booking.entities.Theatre;
@@ -46,13 +47,22 @@ public class ScreenServiceImplementation implements ScreenService {
 	public Screen addScreen(Screen screen) {
 		try {
 		Theatre theatre=theatreServiceImplementation.viewTheatreById(screen.getTheatreId());
+		List<Movie>movies=theatre.getListOfMovies();
 		theatre.getListOfScreens().add(screen);
 			Screen getScreen= screenRepository.save(screen);
-			theatreRepository.save(theatre);
+			theatre.getListOfMovies().clear();
+			if(screen.getShowList()!=null) {
 			for(Show show:screen.getShowList()) {
 				show.setScreenid(screen.getScreenId());
 				show.setTheatreId(screen.getTheatreId());
-			}
+				if(show.getMovie()!=null) {
+				if(!movies.contains(show.getMovie())) {
+					movies.add(show.getMovie());
+				}
+				}
+			}}
+			theatre.setListOfMovies(movies);
+			theatreRepository.save(theatre);
 			screenRepository.save(screen);
 			return getScreen;
 		}

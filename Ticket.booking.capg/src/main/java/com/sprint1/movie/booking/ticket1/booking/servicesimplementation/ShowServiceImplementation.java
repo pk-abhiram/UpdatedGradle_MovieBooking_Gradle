@@ -59,7 +59,7 @@ TheatreRepository theatreRepository;
 			if(screen.getTheatreId()!=theatre.getTheatreId()) {
 				throw new ScreenNotExistsException("Screen not exist with Id: " +screen.getScreenId()+" in theatre:"+theatre.getTheatreId());
 			}
-			Movie movie1=movieServiceImplementation.findMovie(show.getMovie());
+			Movie movie1=movieServiceImplementation.viewMovie(show.getMovie().getMovieId());
 			show.setMovie(movie1);
 			getShow=showRepository.save(show);
 			screen.getShowList().add(getShow);

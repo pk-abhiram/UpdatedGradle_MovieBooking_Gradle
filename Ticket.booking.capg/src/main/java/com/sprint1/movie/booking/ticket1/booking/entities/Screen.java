@@ -28,7 +28,7 @@ public class Screen {
 	@NotNull
 	private String screenName;
 	@OneToMany(targetEntity = Show.class,cascade = CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)
+	
 	private List<Show> showList;
 	@Column(nullable = false)
 	private int rows;

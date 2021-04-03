@@ -98,6 +98,7 @@ public class Movie {
 		result = prime * result + ((language == null) ? 0 : language.hashCode());
 		result = prime * result + ((movieGenre == null) ? 0 : movieGenre.hashCode());
 		result = prime * result + ((movieHours == null) ? 0 : movieHours.hashCode());
+		result = prime * result + movieId;
 		result = prime * result + ((movieName == null) ? 0 : movieName.hashCode());
 		return result;
 	}
@@ -130,6 +131,8 @@ public class Movie {
 				return false;
 		} else if (!movieHours.equals(other.movieHours))
 			return false;
+		if (movieId != other.movieId)
+			return false;
 		if (movieName == null) {
 			if (other.movieName != null)
 				return false;
@@ -137,6 +140,8 @@ public class Movie {
 			return false;
 		return true;
 	}
+
+	
 	
 	
 }

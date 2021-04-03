@@ -12,7 +12,7 @@ public interface AdminService {
 
 	//Methods
 	@Transactional
-	public void addAdmin(Admin admin);
+	public Admin addAdmin(Admin admin);
 	public List<Admin> viewAllAdmin();
 	public Admin viewAdminById(int id);
 	public void deleteAdmin(int id);

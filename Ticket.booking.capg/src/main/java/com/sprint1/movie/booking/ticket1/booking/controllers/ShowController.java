@@ -31,7 +31,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api(value = "Show", tags = { "ShowAPI" })
-@RequestMapping(value = "/show")
+@RequestMapping(value = "/")
 public class ShowController {
 
 	static final org.slf4j.Logger log = LoggerFactory.getLogger(ShowController.class);
@@ -44,7 +44,7 @@ public class ShowController {
 	@Autowired
 	ScreenRepository screenRepository;
 
-	@PostMapping(value="/")
+	@PostMapping(value="/admin/show/")
 	@ApiOperation(value = "Add a show", notes = "Provide show details", response = Show.class)
 	public ResponseEntity<Show> addShow(@RequestBody Show show) {
 		ResponseEntity<Show>  re;
@@ -54,7 +54,7 @@ public class ShowController {
 		return re;
 	}
 
-	@PutMapping(value="/" )
+	@PutMapping(value="/admin/show/" )
 	@ApiOperation(value = "Update a show's details", notes = "Provide show id, new screen id,show end time, show start time, show name,theatre id, movie id", response = Show.class)
 	@Transactional
 	public ResponseEntity<Show> updateShow(@RequestBody Show show) {
@@ -71,7 +71,7 @@ public class ShowController {
 		return re;
 	}
 
-	@DeleteMapping(value="/")
+	@DeleteMapping(value="/admin/show/")
 	@ApiOperation(value = "Delete a show", notes = "Provide show details", response = Show.class)
 	public ResponseEntity<Show> removeShow(@RequestBody Show show) {
 		Show removeShow=showServiceImplementation.removeShow(show);
@@ -81,7 +81,7 @@ public class ShowController {
 	}
 	
 	
-	@DeleteMapping(value="/id/{showId}")
+	@DeleteMapping(value="/admin/show/id/{showId}")
 	@ApiOperation(value = "Delete a show", notes = "Provide show ID", response = Show.class)
 	public ResponseEntity<Show> removeShowById(@PathVariable("showId") int showId) {
 		Show removeShow=showServiceImplementation.deleteShowById(showId);
@@ -99,7 +99,7 @@ public class ShowController {
 		return re;
 	}
 
-	@GetMapping(value="/{showId}")
+	@GetMapping(value="/show/{showId}")
 	@ApiOperation(value = "View a screen by id", notes = "Provide show id", response = Show.class)
 	public ResponseEntity<Show> viewScreenById(@PathVariable("showId") int showId){
 		ResponseEntity<Show>  re;
@@ -110,7 +110,7 @@ public class ShowController {
 		return re;
 	}
 
-	@GetMapping(value="/theatre/{theatreId}")
+	@GetMapping(value="/show/theatre/{theatreId}")
 	@ApiOperation(value = "View a screen using theatre id", notes = "Provide theatre id", response = Show.class)
 	public ResponseEntity<List<Show>> viewScreenBytheatreId(@PathVariable("theatreId") int theatreId){
 		ResponseEntity<List<Show>>  re;
@@ -132,7 +132,7 @@ public class ShowController {
 		return re;
 	}
 
-	@GetMapping(value="/")
+	@GetMapping(value="/show")
 	@ApiOperation(value = "View all shows", response = Show.class)
 	public ResponseEntity<List<Show>> viewScreensAll(){
 		ResponseEntity<List<Show>>  re;

@@ -13,8 +13,8 @@ public interface TheatreService {
 
 	public Theatre addTheatre(Theatre theatre);
 	@Transactional
-	public void updateTheatre(Theatre theatre);
-	public void removeTheatre(int theatreId);
+	public Theatre updateTheatre(Theatre theatre);
+	public List<Theatre> removeTheatre(int theatreId);
 	public Theatre viewTheatreById(int theatreId);
 	public List<Theatre>viewTheatreList();
 	public Theatre theatreAddMovie(int theatreId,Movie movie);

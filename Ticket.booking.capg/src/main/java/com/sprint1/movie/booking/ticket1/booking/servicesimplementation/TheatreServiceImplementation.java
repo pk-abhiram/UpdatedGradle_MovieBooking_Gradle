@@ -40,7 +40,7 @@ public class TheatreServiceImplementation implements TheatreService{
 			movies.addAll(theatre.getListOfMovies());
 			theatre.getListOfMovies().clear();
 			for(Movie movie:movies) {
-				Movie getMovie=movieServiceImplementation.findMovie(movie);
+				Movie getMovie=movieServiceImplementation.viewMovie(movie.getMovieId());
 				theatre.getListOfMovies().add(getMovie);
 			}
 		}
@@ -66,7 +66,7 @@ public class TheatreServiceImplementation implements TheatreService{
 	}
 
 	@Transactional()
-	public void updateTheatre(Theatre theatre) {
+	public Theatre updateTheatre(Theatre theatre) {
 
 		Optional<Theatre> findTheatre = theatreRepository.findById(theatre.getTheatreId());
 
@@ -95,18 +95,19 @@ public class TheatreServiceImplementation implements TheatreService{
 			{updateTheatre.setTheatreCity(theatre.getTheatreCity());}
 			if(theatre.getTheatreCity()!=null)
 			{updateTheatre.setTheatreName(theatre.getTheatreName());}
-
+			return updateTheatre;
 		}
 		else {
 			throw new TheatreNotExistsException("Theatre not exist with Id ");
 		}
 	}
 
-	public void removeTheatre(int theatreId) {
+	public List<Theatre> removeTheatre(int theatreId) {
 		Optional<Theatre> findRemoveTheatre=theatreRepository.findById(theatreId);
 
 		if(findRemoveTheatre.isPresent()) {
 			theatreRepository.delete(findRemoveTheatre.get());
+			return theatreRepository.findAll();
 		}
 		else {
 			throw new TheatreNotExistsException("Theatre not exist with Id ");

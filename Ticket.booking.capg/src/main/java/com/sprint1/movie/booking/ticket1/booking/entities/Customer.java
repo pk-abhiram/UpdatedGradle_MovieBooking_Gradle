@@ -65,7 +65,7 @@ public class Customer {
 	}
 
 	public int getCustomerId() {
-		return customerId;
+		return this.customerId;
 	}
 
 	public void setCustomerId(int customerId) {
@@ -73,7 +73,7 @@ public class Customer {
 	}
 
 	public String getCustomerName() {
-		return customerName;
+		return this.customerName;
 	}
 
 	public void setCustomerName(String customerName) {
@@ -81,7 +81,7 @@ public class Customer {
 	}
 
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 
 	public void setAddress(String address) {
@@ -89,7 +89,7 @@ public class Customer {
 	}
 
 	public String getMobileNo() {
-		return mobileNo;
+		return this.mobileNo;
 	}
 
 	public void setMobileNo(String mobileNo) {
@@ -97,7 +97,7 @@ public class Customer {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -105,7 +105,7 @@ public class Customer {
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
@@ -113,7 +113,7 @@ public class Customer {
 	}
 
 	public List<TicketBooking> getTicketBooking() {
-		return ticketBooking;
+		return this.ticketBooking;
 	}
 
 	public void setTicketBooking(List<TicketBooking> ticketBooking) {
@@ -121,7 +121,7 @@ public class Customer {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {

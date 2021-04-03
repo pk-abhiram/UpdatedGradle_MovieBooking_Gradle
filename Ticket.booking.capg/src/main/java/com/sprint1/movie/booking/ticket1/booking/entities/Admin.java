@@ -23,6 +23,11 @@ public class Admin {
 	private String adminName;
 	@Column(nullable = false)
 	private String adminContact;
+	@Column(nullable = false)
+	private String email;
+	@Column(nullable = false)
+	private String password;
+	
 	
 	@OneToOne(cascade=CascadeType.ALL,targetEntity = User.class,orphanRemoval = true)
 	User user;
@@ -31,53 +36,93 @@ public class Admin {
 	public Admin() {
 		super();
 	}
-	public Admin(int adminId, String adminName, String adminContact) {
-		super();
-		this.adminId = adminId;
-		this.adminName = adminName;
-		this.adminContact = adminContact;
-	}
-	public Admin(String adminName, String adminContact) {
-		super();
-		this.adminName = adminName;
-		this.adminContact = adminContact;
-	}
+
 	
-	public Admin(int adminId, String adminName, String adminContact, User user) {
+	public Admin(int adminId, String adminName, String adminContact, String email, String password, User user) {
 		super();
 		this.adminId = adminId;
 		this.adminName = adminName;
 		this.adminContact = adminContact;
+		this.email = email;
+		this.password = password;
 		this.user = user;
 	}
+
+
+	public Admin(String adminName, String adminContact, String email, String password, User user) {
+		super();
+		this.adminName = adminName;
+		this.adminContact = adminContact;
+		this.email = email;
+		this.password = password;
+		this.user = user;
+	}
+
+
 	//Getters and setters
-	public int getadminId() {
+	
+
+
+	
+	public int getAdminId() {
 		return adminId;
 	}
-	public void setadminId(int adminId) {
+
+
+	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
-	
-	
-	public String getadminName() {
+
+
+	public String getAdminName() {
 		return adminName;
 	}
-	public void setadminName(String adminName) {
+
+
+	public void setAdminName(String adminName) {
 		this.adminName = adminName;
 	}
-	public String getadminContact() {
+
+
+	public String getAdminContact() {
 		return adminContact;
 	}
-	public void setadminContact(String adminContact) {
+
+
+	public void setAdminContact(String adminContact) {
 		this.adminContact = adminContact;
 	}
-	
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 	public User getUser() {
 		return user;
 	}
+
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,10 +158,13 @@ public class Admin {
 			return false;
 		return true;
 	}
+
+
 	@Override
 	public String toString() {
-		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", adminContact=" + adminContact + ", user="
-				+ user + "]";
+		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", adminContact=" + adminContact + ", email="
+				+ email + ", password=" + password + ", user=" + user + "]";
 	}
-    
-}
+	
+	
+	}

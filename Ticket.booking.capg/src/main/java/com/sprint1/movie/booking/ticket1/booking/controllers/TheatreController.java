@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api(value = "Theatre", tags = { "TheatreAPI" })
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/theatre")
 public class TheatreController {
 	static final org.slf4j.Logger log = LoggerFactory.getLogger(TheatreController.class);
@@ -47,10 +49,10 @@ public class TheatreController {
 	@PutMapping(value="/" )
 	@ApiOperation(value = "Update a theatre's details", notes = "Provide theatre id, new manager contact, manager name, theatre city, theatre name or else give null", response = Theatre.class)
 	@Transactional
-	public ResponseEntity<Void> updateTheatre(@RequestBody Theatre theatre) {
-		ResponseEntity<Void>  re;
-			theatreServiceImplementation.updateTheatre(theatre);
-			re=new ResponseEntity<>(HttpStatus.OK);
+	public ResponseEntity<Theatre> updateTheatre(@RequestBody Theatre theatre) {
+		ResponseEntity<Theatre>  re;
+			Theatre updatedTheatre=theatreServiceImplementation.updateTheatre(theatre);
+			re=new ResponseEntity<>(updatedTheatre,HttpStatus.OK);
 			 log.info(re+"");
 		return re;
 	}
@@ -58,11 +60,11 @@ public class TheatreController {
 	
 	@DeleteMapping(value="/id/{theatreId}")
 	@ApiOperation(value = "Reamove a theatre by its id", notes = "Provide theatre id", response = Theatre.class)
-	public ResponseEntity<Void> removeTheatreById(@PathVariable("theatreId") int theatreId) {
-		ResponseEntity<Void>  re;
+	public ResponseEntity<List<Theatre>> removeTheatreById(@PathVariable("theatreId") int theatreId) {
+		ResponseEntity<List<Theatre>>  re;
 		
-		theatreServiceImplementation.removeTheatre(theatreId);
-		re=new ResponseEntity<>(HttpStatus.OK);
+	List<Theatre>theatres=theatreServiceImplementation.removeTheatre(theatreId);
+		re=new ResponseEntity<>(theatres,HttpStatus.OK);
 		 log.info(re+"");
 		return re;
 	}

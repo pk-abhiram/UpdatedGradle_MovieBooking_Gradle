@@ -43,8 +43,8 @@ public class AdminController {
 		public ResponseEntity<Admin> addAdmin(@RequestBody Admin a) {
 			ResponseEntity<Admin>re;
 			
-				ad.addAdmin(a);
-				re=new ResponseEntity<>(a, HttpStatus.CREATED);
+				Admin admin=ad.addAdmin(a);
+				re=new ResponseEntity<>(admin, HttpStatus.CREATED);
 			
 			return re;
 		}

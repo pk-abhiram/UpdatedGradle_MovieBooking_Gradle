@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sprint1.movie.booking.ticket1.booking.entities.Customer;
+import com.sprint1.movie.booking.ticket1.booking.entities.Show;
 import com.sprint1.movie.booking.ticket1.booking.entities.TicketBooking;
 import com.sprint1.movie.booking.ticket1.booking.entities.User;
 import com.sprint1.movie.booking.ticket1.booking.exceptions.CustomerNotExistsException;
@@ -23,21 +24,28 @@ public class CustomerServiceImplementation implements CustomerService{
 	@Autowired
 	TicketBookingServiceImplementation ticketBookingServiceImplementation;
 
+	@Autowired
+	ShowServiceImplementation showImplementation;
+	
+	@Autowired
+	UserServiceImplementation userServiceImplementation;
+
 	Optional<Customer> customers;
 
 	//Adding a customer
 	@Transactional
 	public Customer addCustomer(Customer customer) {
-		Optional<Customer> getCustomer = customerRepostitory.findById(customer.getCustomerId());
-		if(getCustomer.isPresent()) {
-			User user = new User(customer.getPassword(),"Customer");
+		
+		if(userServiceImplementation.findByEmailAdmin(customer.getEmail())==null) {
+			
+			User user = new User(customer.getEmail(),customer.getPassword(),"CUSTOMER");
+			System.out.println(user);
 			customer.setUser(user);
 			customer = customerRepostitory.save(customer); 
+			return customer;
 		}
-		else {
-			throw new CustomerNotExistsException("Customer with id:"+customer.getCustomerId()+" already exists");
-		}
-		return customer;
+		throw new CustomerNotExistsException("Customer exists with email:"+customer.getEmail());
+		
 	}
 
 	//Update a customer
@@ -61,6 +69,7 @@ public class CustomerServiceImplementation implements CustomerService{
 			}
 			if(customer.getPassword()!=null) {
 				updatecust.setPassword(customer.getPassword());
+				updatecust.setUser(new User(customer.getEmail(),customer.getPassword(),"Customer"));
 			}
 		}
 		else {
@@ -70,19 +79,33 @@ public class CustomerServiceImplementation implements CustomerService{
 	}
 
 	//Deleting a customer
-	public Customer deleteCustomer(int id){
-		Optional<Customer> customer = customerRepostitory.findById(id);
-		Customer c = null;
-		if(customer.isPresent()) {
-			c = customer.get();
-			customerRepostitory.delete(c);
-			return c;
-		}
-		else {
-			throw new CustomerNotExistsException("Customer with id:"+id+" does not exists");
-		}
+//	public Customer deleteCustomer(int id){
+//		Optional<Customer> customer = customerRepostitory.findById(id);
+//		Customer c = null;
+//		if(customer.isPresent()) {
+//			c = customer.get();
+//			customerRepostitory.delete(c);
+//			return c;
+//		}
+//		else {
+//			throw new CustomerNotExistsException("Customer with id:"+id+" does not exists");
+//		}
+//
+//	}	
+	//Deleting a customer
+		public List<Customer> deleteCustomer(int id){
+			Optional<Customer> customer = customerRepostitory.findById(id);
+			Customer c = null;
+			if(customer.isPresent()) {
+				c = customer.get();
+				customerRepostitory.delete(c);
+				return customerRepostitory.findAll();
+			}
+			else {
+				throw new CustomerNotExistsException("Customer with id:"+id+" does not exists");
+			}
 
-	}	
+		}
 
 	//Viewing customer by id
 	public Customer viewCustomerById(int id) {
@@ -139,14 +162,17 @@ public class CustomerServiceImplementation implements CustomerService{
 		List<Customer> customer = customerRepostitory.findAll();
 		List<Customer> customerInAMovie = new ArrayList<>();
 		List<TicketBooking> tickets = ticketBookingServiceImplementation.showAllBooking(id);
-		for(TicketBooking t:tickets) {
-			for(Customer c:customer) {
-				for(TicketBooking ticket:c.getTicketBooking()) {
-					if(ticket.getTicketId()==t.getTicketId()) {
-						customerInAMovie.add(c);
-					}
+		for(Customer c:customer) {
+			for(TicketBooking t:tickets) {
+				Show show = showImplementation.viewShowById(t.getShowId());
+				if(show.getMovie().getMovieId()==id) {
+					customerInAMovie.add(c);
 				}
-			}
+				else {
+					throw new CustomerNotExistsException("Customers do not exist in this movie.");
+				}
+			}	
+
 		}
 		return customerInAMovie;
 	}
