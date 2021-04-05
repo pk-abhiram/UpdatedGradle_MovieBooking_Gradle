@@ -65,9 +65,10 @@ public class UserController {
 	@PostMapping("/finduser")
 	@ApiOperation(value = "Find a user", notes = "Find user email", response = User.class)
 	@ResponseStatus(code = HttpStatus.OK)
-	public ResponseEntity<User> findUser(@RequestBody User u) {
+	public ResponseEntity<User> findUser(@RequestBody User user) {
 		ResponseEntity<User>re;
-		User getUser=userServiceImplementation.findByEmail(u.getEmail());
+		
+		User getUser=userServiceImplementation.findByEmail(user.getEmail());
 		re=new ResponseEntity<>(getUser, HttpStatus.CREATED);
 		log.info(re+"");
 		return re;

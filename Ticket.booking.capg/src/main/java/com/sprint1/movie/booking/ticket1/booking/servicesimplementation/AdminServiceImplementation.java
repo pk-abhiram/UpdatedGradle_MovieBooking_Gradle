@@ -86,6 +86,10 @@ public class AdminServiceImplementation implements AdminService {
 	public Admin ByAdminNameAndAdminContact(String adminName, String adminContact) {
 		return iar.findByAdminNameAndAdminContact(adminName, adminContact);
 		}
+	
+	public Admin ByAdminEmail(String email) {
+		return iar.findByEmail(email);
+		}
 
 	@Override
 	public Optional<Admin> findByAdminId(int id) {

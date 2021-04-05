@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.sprint1.movie.booking.ticket1.booking.entities.Admin;
 import com.sprint1.movie.booking.ticket1.booking.exceptions.AdminNotExistsException;
 import com.sprint1.movie.booking.ticket1.booking.repository.AdminRepository;
 import com.sprint1.movie.booking.ticket1.booking.service.AdminService;
+import com.sprint1.movie.booking.ticket1.booking.servicesimplementation.AdminServiceImplementation;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,12 +32,16 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/admin")
+@CrossOrigin(origins = "*")
 @Api(value = "Admin", tags = { "AdminAPI" })
 public class AdminController {
 
 		
 		@Autowired
 		AdminService ad;
+		
+		@Autowired
+		AdminServiceImplementation adminServiceImplementation;
 		
 		//adding a new admin
 		@PostMapping("/addadmin")
@@ -94,6 +100,13 @@ public class AdminController {
 		 return re;
 		}
 		
+		@GetMapping("/email/{adminEmail}")
+		public ResponseEntity<Admin> findAdminByEmail(@PathVariable("adminEmail") String email ){
+			ResponseEntity<Admin>re;
+			Admin a = adminServiceImplementation.ByAdminEmail(email);
+			re=new ResponseEntity<>(a,HttpStatus.OK);
+		 return re;
+		}
 		
 		//Deleting a admin by Id
 		@DeleteMapping("/deleteadmin/{id}")
