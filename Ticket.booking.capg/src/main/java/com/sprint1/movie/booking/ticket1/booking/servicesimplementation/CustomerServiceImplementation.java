@@ -1,8 +1,10 @@
 package com.sprint1.movie.booking.ticket1.booking.servicesimplementation;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import com.sprint1.movie.booking.ticket1.booking.entities.TicketBooking;
 import com.sprint1.movie.booking.ticket1.booking.entities.User;
 import com.sprint1.movie.booking.ticket1.booking.exceptions.CustomerNotExistsException;
 import com.sprint1.movie.booking.ticket1.booking.repository.CustomerRepostitory;
+import com.sprint1.movie.booking.ticket1.booking.repository.TicketBookingRepository;
 import com.sprint1.movie.booking.ticket1.booking.service.CustomerService;
 
 @Service
@@ -29,6 +32,10 @@ public class CustomerServiceImplementation implements CustomerService{
 	
 	@Autowired
 	UserServiceImplementation userServiceImplementation;
+	
+	@Autowired
+	TicketBookingRepository ticketBookingRepository;
+
 
 	Optional<Customer> customers;
 
@@ -128,12 +135,18 @@ public class CustomerServiceImplementation implements CustomerService{
 	}
 
 	//Booking a ticket with customer details
-	public Customer addCustomerAndTicket(int id,List<TicketBooking> ticket) {
+	public Customer addCustomerAndTicket(int id,TicketBooking ticket) {
 		Optional<Customer> customer = customerRepostitory.findById(id);
 		if(customer.isPresent()) {
-			for(TicketBooking t:ticket) {
-				customer.get().getTicketBooking().add(t);
-			}
+			ticket.setBookingDate(LocalDate.now());
+			ticket.getTicket().setTicketStatus(true);
+			ticket.setTransactionId(id);
+			ticket.setTransactionStatus("SUCCESS");
+			Random rd = new Random();
+			 int   s =  rd.nextInt() & Integer.MAX_VALUE;
+			 ticket.setTransactionId(s);
+				customer.get().getTicketBooking().add(ticket);
+			
 			return customerRepostitory.save(customer.get());
 		}
 		else {
@@ -148,6 +161,7 @@ public class CustomerServiceImplementation implements CustomerService{
 			Customer cust = customer.get();
 			if(ticketBookingServiceImplementation.showAllBookingList(ticketId)!=null && cust.getTicketBooking().get(cust.getTicketBooking().indexOf(ticketBookingServiceImplementation.showAllBookingList(ticketId)))!=null) {
 				cust.getTicketBooking().remove(ticketBookingServiceImplementation.showAllBookingList(ticketId));
+				
 				customerRepostitory.save(cust);
 			}
 		}
@@ -175,6 +189,17 @@ public class CustomerServiceImplementation implements CustomerService{
 
 		}
 		return customerInAMovie;
+	}
+	public Customer viewCustomerByEmail(String email) {
+			Customer customer=customerRepostitory.findByEmail(email);
+				if(customer!=null) {
+					return customer;
+				}
+				else {
+					throw new CustomerNotExistsException("Customers do not exist with Email:"+email);
+				}
+		
+		
 	}
 
 

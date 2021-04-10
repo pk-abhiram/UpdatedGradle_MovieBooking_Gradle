@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @Api(value = "Show", tags = { "ShowAPI" })
 @RequestMapping(value = "/")
+@CrossOrigin(origins = "*")
 public class ShowController {
 
 	static final org.slf4j.Logger log = LoggerFactory.getLogger(ShowController.class);
@@ -94,18 +96,18 @@ public class ShowController {
 	public ResponseEntity<Show> viewShow(@RequestBody Show show){
 		ResponseEntity<Show>  re;
 		Show findShow=showServiceImplementation.viewShow(show);
-		re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
+		re = new ResponseEntity<>(findShow,HttpStatus.OK);
 		log.info(re+"");
 		return re;
 	}
 
-	@GetMapping(value="/show/{showId}")
+	@GetMapping(value="/show/id/{showId}")
 	@ApiOperation(value = "View a screen by id", notes = "Provide show id", response = Show.class)
 	public ResponseEntity<Show> viewScreenById(@PathVariable("showId") int showId){
 		ResponseEntity<Show>  re;
 		Show findShow=showServiceImplementation.viewShowById(showId);
 
-		re = new ResponseEntity<>(findShow,HttpStatus.FOUND);
+		re = new ResponseEntity<>(findShow,HttpStatus.OK);
 		log.info(re+"");
 		return re;
 	}

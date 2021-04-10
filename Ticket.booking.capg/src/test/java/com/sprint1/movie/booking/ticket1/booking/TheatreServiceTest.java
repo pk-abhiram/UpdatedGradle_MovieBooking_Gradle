@@ -128,9 +128,9 @@ class TheatreServiceTest {
 //		@Test
 	public void testTheatreRemoveScreen() {
 		try {
-			int theatreId=5;
-			int screenId=7;
-			log.info(""+theatreServiceImplementation.theatreRemoveScreen(theatreId, screenId));
+			int theatreId=1;
+			int screenId=1;
+			log.info(""+theatreServiceImplementation.theatreAddMovie(theatreId, screenId));
 		}
 		catch(Exception e) {
 			log.info(e.getMessage());

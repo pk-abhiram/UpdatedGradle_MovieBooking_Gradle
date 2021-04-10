@@ -134,13 +134,23 @@ public class TheatreServiceImplementation implements TheatreService{
 
 		return theatres;
 	}
+	
+	public String[] viewAllTheatreListByCity(){
+		List<Theatre>theatres=theatreRepository.findAll();
+		List<String>cities=new ArrayList<String>();
+		for(Theatre t:theatres) {
+			cities.add(t.getTheatreCity());
+		}
+		String[] uniqueCities= cities.stream().distinct().toArray(String[]::new);
+		return uniqueCities;
+	}
 
 
 
-	public Theatre theatreAddMovie(int theatreId,Movie movie) {
+	public Theatre theatreAddMovie(int theatreId,int movieId) {
 		Theatre theatre=theatreServiceImplementation.viewTheatreById(theatreId);
 
-		theatre.getListOfMovies().add(movie);
+		theatre.getListOfMovies().add(movieServiceImplementation.viewMovie(movieId));
 		return theatreRepository.save(theatre);
 	}
 
@@ -169,4 +179,6 @@ public class TheatreServiceImplementation implements TheatreService{
 		theatre.getListOfScreens().remove(screen);
 		return theatreRepository.save(theatre);
 	}
+
+	
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sprint1.movie.booking.ticket1.booking.entities.Customer;
 import com.sprint1.movie.booking.ticket1.booking.entities.Seat;
 import com.sprint1.movie.booking.ticket1.booking.entities.Show;
 import com.sprint1.movie.booking.ticket1.booking.entities.TicketBooking;
@@ -31,6 +32,9 @@ public class TicketBookingServiceImplementation implements TicketBookingService{
 	
 	@Autowired
 	ShowServiceImplementation showServiceImplementation;
+	
+	@Autowired
+	CustomerServiceImplementation customerServiceImplementation;
 	
 	
 public TicketBooking addBooking(TicketBooking ticketBooking) {
@@ -86,18 +90,21 @@ public TicketBooking updateBooking(TicketBooking booking) {
 }
 
 
-@Override
-public TicketBooking cancelBooking(TicketBooking ticketBooking) {
-	Optional<TicketBooking> findCancelBooking = ticketBookingRepository.findById(ticketBooking.getTicketId());
+
+public Customer cancelBooking(int custid,int ticketid) {
+	Optional<TicketBooking> findCancelBooking = ticketBookingRepository.findById(ticketid);
+	Customer customer=customerServiceImplementation.viewCustomerById(custid);
 	TicketBooking cancelBooking = null;
 	if(findCancelBooking.isPresent()) {
 		cancelBooking = findCancelBooking.get();
-		ticketBookingRepository.delete(cancelBooking);
+		customerServiceImplementation.deleteCustomerandTicket(custid, ticketid);
+		ticketBookingRepository.deleteById(ticketid);
+		return customerServiceImplementation.viewCustomerById(custid);
 	}
 	else {
-		throw new BookingNotExistsException("Booking Not Exist with ID : " + ticketBooking.getTicketId());
+		throw new BookingNotExistsException("Booking Not Exist with ID : " + ticketid);
 	}
-	return cancelBooking;
+	
 }
 
 

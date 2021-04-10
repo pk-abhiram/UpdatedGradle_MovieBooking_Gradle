@@ -26,8 +26,8 @@ public class TicketBooking {
 	
 	private LocalDate bookingDate;
 
-	Random rnd = new Random();
-	private  int transactionId = rnd.nextInt(999999);
+	
+	private  int transactionId ;
 	
 	private String transactionMode;
 	private String transactionStatus;
@@ -45,7 +45,7 @@ public class TicketBooking {
 		this.bookingDate = LocalDate.now();
 		this.showId = showId;
 		this.ticket = ticket;
-		this.totalCost = this.ticket.getNoOfSeats()*150;
+		
 	}
 
 	

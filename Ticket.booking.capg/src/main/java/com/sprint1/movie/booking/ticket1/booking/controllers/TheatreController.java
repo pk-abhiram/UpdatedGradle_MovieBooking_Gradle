@@ -99,4 +99,14 @@ public class TheatreController {
 		return re;
 	}
 	
+	@GetMapping(value="/allCity/")
+	@ApiOperation(value = "View theatres in a city", notes = "Provide city name", response = Theatre.class)
+	public ResponseEntity<String[]> viewAllTheatreListByCity(){
+		ResponseEntity<String[]>  re;
+		String[] findTheatre=theatreServiceImplementation.viewAllTheatreListByCity();
+			re = new ResponseEntity<>(findTheatre,HttpStatus.OK);
+			 log.info(re+"");
+		return re;
+	}
+	
 }

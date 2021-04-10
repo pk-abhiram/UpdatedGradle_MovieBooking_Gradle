@@ -25,14 +25,19 @@ public class Movie {
 	@Column(nullable = false)
 	private String description;
 	
+	private String imageUrl;
+	
 	
 	
 	
 	public Movie() {
 		super();
 	}
+	
+	
+	
 	public Movie(int movieId, String movieName, String movieGenre, String movieHours, String language,
-			String description) {
+			String description, String imageUrl) {
 		super();
 		this.movieId = movieId;
 		this.movieName = movieName;
@@ -40,15 +45,24 @@ public class Movie {
 		this.movieHours = movieHours;
 		this.language = language;
 		this.description = description;
+		this.imageUrl = imageUrl;
 	}
-	public Movie(String movieName, String movieGenre, String movieHours, String language, String description) {
+
+
+
+	public Movie(String movieName, String movieGenre, String movieHours, String language, String description,
+			String imageUrl) {
 		super();
 		this.movieName = movieName;
 		this.movieGenre = movieGenre;
 		this.movieHours = movieHours;
 		this.language = language;
 		this.description = description;
+		this.imageUrl = imageUrl;
 	}
+
+
+
 	public int getMovieId() {
 		return movieId;
 	}
@@ -85,23 +99,39 @@ public class Movie {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Movie [movieId=" + movieId + ", movieName=" + movieName + ", movieGenre=" + movieGenre + ", movieHours="
 				+ movieHours + ", language=" + language + ", description=" + description + "]";
 	}
+
+
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		
 		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((language == null) ? 0 : language.hashCode());
-		result = prime * result + ((movieGenre == null) ? 0 : movieGenre.hashCode());
-		result = prime * result + ((movieHours == null) ? 0 : movieHours.hashCode());
-		result = prime * result + movieId;
-		result = prime * result + ((movieName == null) ? 0 : movieName.hashCode());
+		result = movieId;
 		return result;
 	}
+
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -111,35 +141,12 @@ public class Movie {
 		if (getClass() != obj.getClass())
 			return false;
 		Movie other = (Movie) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (language == null) {
-			if (other.language != null)
-				return false;
-		} else if (!language.equals(other.language))
-			return false;
-		if (movieGenre == null) {
-			if (other.movieGenre != null)
-				return false;
-		} else if (!movieGenre.equals(other.movieGenre))
-			return false;
-		if (movieHours == null) {
-			if (other.movieHours != null)
-				return false;
-		} else if (!movieHours.equals(other.movieHours))
-			return false;
 		if (movieId != other.movieId)
-			return false;
-		if (movieName == null) {
-			if (other.movieName != null)
-				return false;
-		} else if (!movieName.equals(other.movieName))
 			return false;
 		return true;
 	}
+	
+	
 
 	
 	

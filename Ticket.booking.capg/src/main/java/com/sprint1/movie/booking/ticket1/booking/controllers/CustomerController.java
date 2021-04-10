@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sprint1.movie.booking.ticket1.booking.entities.Customer;
+import com.sprint1.movie.booking.ticket1.booking.entities.TicketBooking;
 import com.sprint1.movie.booking.ticket1.booking.repository.CustomerRepostitory;
 import com.sprint1.movie.booking.ticket1.booking.service.CustomerService;
 import com.sprint1.movie.booking.ticket1.booking.servicesimplementation.CustomerServiceImplementation;
@@ -56,9 +57,9 @@ public class CustomerController {
 	//Update a customer 
 	@PutMapping("/")
 	@ApiOperation(value = "Update Customer's details",notes="Provide Customer id, new name, address, mobile number, email, password else null", response = Customer.class)
-	public ResponseEntity<Void> updateCustomer(@ApiParam(value = "Customer to be Updated", required = true) @RequestBody Customer customer) {
-		customerServiceImplemntation.updateCustomer(customer);
-		return new ResponseEntity<>(HttpStatus.OK);
+	public ResponseEntity<Customer> updateCustomer(@ApiParam(value = "Customer to be Updated", required = true) @RequestBody Customer customer) {
+		Customer customerUpdate=customerServiceImplemntation.updateCustomer(customer);
+		return new ResponseEntity<>(customerUpdate,HttpStatus.OK);
 	}
 
 	//Deleting a customer by id
@@ -94,13 +95,23 @@ public class CustomerController {
 	}	
 	
 	//Adding a customer with ticket booking
-	@PostMapping("/addCustomerAndTicket")
+	@PostMapping("/addCustomerTicket/{customerId}")
 	@ApiOperation(value = "Add a customer and book a ticket", notes = "Provide customer and ticket details", response = Customer.class)
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ResponseEntity<Customer> addCustomerAndTicket(@RequestBody Customer c) {
-		Customer cust = customerServiceImplemntation.addCustomerAndTicket(c.getCustomerId(), c.getTicketBooking());
+	public ResponseEntity<Customer> addCustomerAndTicket(@PathVariable("customerId") int customerId,@RequestBody TicketBooking ticketBook) {
+		Customer cust = customerServiceImplemntation.addCustomerAndTicket(customerId, ticketBook);
 		return new ResponseEntity<>(cust, HttpStatus.CREATED);
 	}
+	
+	//Getting a customer with email
+		@GetMapping("/email/{email}")
+		@ApiOperation(value = "Add a customer and book a ticket", notes = "Provide customer and ticket details", response = Customer.class)
+		@ResponseStatus(code = HttpStatus.OK)
+		public ResponseEntity<Customer> viewCustomerByEmail(@PathVariable String email) {
+			Customer cust = customerServiceImplemntation.viewCustomerByEmail(email);
+			return new ResponseEntity<>(cust, HttpStatus.CREATED);
+		}
+
 
 	//Deleting a Ticket
 	@DeleteMapping("deleteticket/{customerId}/{ticketId}")

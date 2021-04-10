@@ -25,7 +25,6 @@ public class Ticket {
 	private int ticketId;
 	@Column(nullable = false)
 	private int noOfSeats;
-
 	@OneToMany(cascade = CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Seat> seats;

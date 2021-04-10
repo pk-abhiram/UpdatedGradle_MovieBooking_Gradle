@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sprint1.movie.booking.ticket1.booking.entities.Customer;
 import com.sprint1.movie.booking.ticket1.booking.entities.TicketBooking;
 import com.sprint1.movie.booking.ticket1.booking.repository.TicketBookingRepository;
 import com.sprint1.movie.booking.ticket1.booking.servicesimplementation.TicketBookingServiceImplementation;
@@ -27,6 +29,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api(value = "TicketBooking", tags = { "TicketBookingAPI" })
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "Booking")
 public class TicketBookingController {
 
@@ -62,13 +65,14 @@ public class TicketBookingController {
 			return re;
 	}
 	
-	@DeleteMapping("/")
+	@DeleteMapping("/delete/{custid}/{ticketid}")
 	@ApiOperation(value = "Cancel a booking", notes = "Provide ticket details", response = TicketBooking.class)
-	public ResponseEntity<Void> cancelBooking(@RequestBody TicketBooking ticketBooking) {
-		ResponseEntity<Void> re;
+	public ResponseEntity<Customer> cancelBooking(@PathVariable("custid") int custid,@PathVariable("ticketid") int ticketid) {
+		ResponseEntity<Customer> re;
 		
-			ticketBookingServiceImplementation.cancelBooking(ticketBooking);
-			re = new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		Customer newCust=ticketBookingServiceImplementation.cancelBooking(custid,ticketid);
+			
+			re = new ResponseEntity<>(newCust,HttpStatus.OK);
 			log.info(re+"");
 		return re;
 	}

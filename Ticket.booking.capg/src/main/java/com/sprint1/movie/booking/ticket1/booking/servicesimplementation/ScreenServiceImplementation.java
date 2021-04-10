@@ -37,6 +37,9 @@ public class ScreenServiceImplementation implements ScreenService {
 	ShowServiceImplementation showServiceImplementation;
 	
 	@Autowired
+	MovieServiceImplementation movieServiceImplementation;
+	
+	@Autowired
 	TheatreServiceImplementation theatreServiceImplementation;
 	
 	@Autowired
@@ -46,8 +49,12 @@ public class ScreenServiceImplementation implements ScreenService {
 	TheatreService theatreService;
 	public Screen addScreen(Screen screen) {
 		try {
+			
 		Theatre theatre=theatreServiceImplementation.viewTheatreById(screen.getTheatreId());
-		List<Movie>movies=theatre.getListOfMovies();
+		List<Movie>movies=new ArrayList<Movie>();
+		movies.addAll(theatre.getListOfMovies());
+		
+		int flag=0;
 		theatre.getListOfScreens().add(screen);
 			Screen getScreen= screenRepository.save(screen);
 			theatre.getListOfMovies().clear();
@@ -55,12 +62,21 @@ public class ScreenServiceImplementation implements ScreenService {
 			for(Show show:screen.getShowList()) {
 				show.setScreenid(screen.getScreenId());
 				show.setTheatreId(screen.getTheatreId());
-				if(show.getMovie()!=null) {
-				if(!movies.contains(show.getMovie())) {
-					movies.add(show.getMovie());
+				if(show.getMovie().getMovieId()!=0) {
+					show.setMovie(movieServiceImplementation.viewMovie(show.getMovie().getMovieId()));
+					for(Movie movie:movies) {
+						if(movie.getMovieId()==show.getMovie().getMovieId()) {
+							flag=1;
+						}
+					}
+				if(flag==0) {
+					
+					movies.add(movieServiceImplementation.viewMovie(show.getMovie().getMovieId()));
+					
 				}
 				}
 			}}
+			
 			theatre.setListOfMovies(movies);
 			theatreRepository.save(theatre);
 			screenRepository.save(screen);
